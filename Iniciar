@@ -1,0 +1,3 @@
+npm init -y
+npm i express express-handlebars morgan firebase-admin
+npm i nodemon -D
