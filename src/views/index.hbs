@@ -1,39 +1,46 @@
 <div class="col-md-6 offset-md-3">
     <div class="card">
         <div class="card-header">
-            <h1>Tasks</h1>
+            <h1>Empresas</h1>
         </div>
         <div class="card-body">
-            {{#if contacts}}
+            {{#if empresas}}
             <ul class="list-group">
-                {{#each contacts}}
+                {{#each empresas}}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{firstname}}
-                    {{lastname}} / 
-                    {{email}} / 
-                    {{phone}}
-                    <a href="/delete-contact/{{@key}}" class="btn btn-danger">Delete</a>
+                    {{documento}}
+                    {{razonsocial}} /
+                    {{telefono}} /
+                    {{correoelectronicocontacto}}
+                    <a href="/delete-empresa/{{@key}}" class="btn btn-danger">Delete</a>
                 </li>
                 {{/each}}
             </ul>
             {{else}}
-            <p>No contacts yet.</p>
+            <p>Aún no hay empresas.</p>
             {{/if}}
 
         </div>
         <div class="card-footer">
-            <form action="new-contact" method="POST">
+            <form action="new-empresa" method="POST">
                 <div class="form-group">
-                    <input type="text" name="firstname" placeholder="Firstname" class="form-control" autofocus />
+                    <input type="text" name="documento" placeholder="Documento" class="form-control" autofocus />
                 </div>
                 <div class="form-group">
-                    <input type="text" name="lastname" placeholder="Lastname" class="form-control" />
+                    <input type="text" name="razonsocial" placeholder="Razón social" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <input type="text" name="email" placeholder="Email" class="form-control" />
+                    <input type="tel" name="telefono" placeholder="Teléfono" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <input type="text" name="phone" placeholder="Phone" class="form-control" />
+                    <input type="email" name="correoelectronicocontacto" placeholder="Email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nombrecontacto" placeholder="Nombre contacto" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <textarea name="observacion" cols="30" rows="10" placeholder="Observación"
+                        class="form-control"></textarea>
                 </div>
                 <button class="btn btn-primary btn-block">Add</button>
             </form>
