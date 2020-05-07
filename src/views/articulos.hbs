@@ -1,0 +1,41 @@
+<div class="col-md-6 offset-md-3">
+    <div class="card">
+        <div class="card-header">
+            <h1>Articulos</h1>
+        </div>
+        <div class="card-body">
+            {{#if articulos}}
+            <ul class="list-group">
+                {{#each articulos}}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{nombrearticulo}}
+                    {{descripcion}} /
+                    {{codigo}} /
+                    {{codigobarras}}
+                    <a href="/delete-articulo/{{@key}}" class="btn btn-danger">Delete</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+            <p>Aún no hay artículos.</p>
+            {{/if}}
+        </div>
+        <div class="card-footer">
+            <form action="new-articulo" method="POST">
+                <div class="form-group">
+                    <input type="text" name="nombrearticulo" placeholder="Nombre artículo" class="form-control" autofocus />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="descripcion" placeholder="Descripción" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="number" name="codigo" placeholder="Código" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="number" name="codigobarras" placeholder="Código barras" class="form-control" />
+                </div>
+                <button class="btn btn-primary btn-block">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
