@@ -1,25 +1,37 @@
-<div class="col-md-6 offset-md-3">
+<div class="col-12">
     <div class="card">
         <div class="card-header">
             <h1>Empresas</h1>
         </div>
         <div class="card-body">
             {{#if empresas}}
-            <ul class="list-group">
-                {{#each empresas}}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{documento}}
-                    {{razonsocial}} /
-                    {{telefono}} /
-                    {{correoelectronicocontacto}}
-                    <a href="/delete-empresa/{{@key}}" class="btn btn-danger">Delete</a>
-                </li>
-                {{/each}}
-            </ul>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Documento</th>
+                        <th scope="col">Razón social</th>
+                        <th scope="col">Télefono</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Fecha modificación</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each empresas}}
+                    <tr>
+                        <th scope="row">{{documento}}</th>
+                        <td>{{razonsocial}}</td>
+                        <td>{{telefono}}</td>
+                        <td>{{correoelectronicocontacto}}</td>
+                        <td>{{modifiedon}}</td>
+                        <td><a href="/delete-empresa/{{@key}}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
             {{else}}
             <p>Aún no hay empresas.</p>
             {{/if}}
-
         </div>
         <div class="card-footer">
             <form action="new-empresa" method="POST">
@@ -37,6 +49,9 @@
                 </div>
                 <div class="form-group">
                     <input type="text" name="nombrecontacto" placeholder="Nombre contacto" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="date" name="modifiedon" placeholder="Fecha modificación" class="form-control" />
                 </div>
                 <div class="form-group">
                     <textarea name="observacion" cols="30" rows="10" placeholder="Observación"

@@ -39,8 +39,6 @@ router.get('/articulos', (req, res) => {
 
 router.post('/new-empresa', (req, res) => {
 
-    let dateEvent = (new Date()).toISOString();
-
     const newEmpresa = {
         documento: req.body.documento,
         documentodv: 5,
@@ -64,9 +62,9 @@ router.post('/new-empresa', (req, res) => {
         id: 0,
         idstate: 0,
         createdby: 1,
-        createdon: dateEvent,
+        createdon: req.body.modifiedon,
         modifiedby: 1,
-        modifiedon: dateEvent
+        modifiedon: req.body.modifiedon
     }
 
     console.log(newEmpresa);
@@ -84,8 +82,6 @@ router.get('/delete-empresa/:id', (req, res) => {
 });
 
 router.post('/new-articulo', (req, res) => {
-
-    let dateEvent = (new Date()).toISOString();
 
     const newArticulo = {
         codigo: req.body.codigo,
@@ -115,9 +111,9 @@ router.post('/new-articulo', (req, res) => {
         id: 0,
         idstate: 0,
         createdby: 1,
-        createdon: dateEvent,
+        createdon: req.body.modifiedon,
         modifiedby: 1,
-        modifiedon: dateEvent
+        modifiedon: req.body.modifiedon
     }
 
 
